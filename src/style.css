@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "rubik";
+  src: url("./FontFiles/Rubik-VariableFont_wght.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "rubik";
+  src: url("./FontFiles/Rubik-Italic-VariableFont_wght.ttf");
+  font-style: italic;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.2s linear, opacity 0s, transform 0s;
+}
+
+body {
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  margin: 0px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.2s linear, background-position 0s;
+  background-color: rgb(244, 246, 250);;
+}
+
+html,
+body,
+#root {
+  border: 0.00001px solid transparent;
+}
+
+@media (max-width: 800px) {
+  body {
+    background-position: top left;
+    background-size: 500px 500px;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+:root {
+  --font: "rubik";
+}
