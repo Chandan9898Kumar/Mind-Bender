@@ -23,7 +23,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   transition: all 0.2s linear, background-position 0s;
-  background-color: rgb(244, 246, 250);;
 }
 
 html,
