@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import style from "./style.module.css";
 import icons from "~/Common/icons";
+import { useSelector } from "react-redux";
 const Subject = () => {
   const subject = "CSS";
-  const theme = "light";
+  const theme = useSelector((state) => state.theme);
   const iconRef = useRef();
 
   useEffect(() => {
