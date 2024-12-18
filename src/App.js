@@ -33,7 +33,7 @@ function App() {
             <Header />
             <Routes>
               <Route exact path="/" element={<Menu />} />
-              <Route exact path="/quiz" element={<Quiz />} />
+              <Route exact path="/quiz/:name" element={<Quiz />} />
               <Route exact path="result" element={<Result />} />
             </Routes>
           </Suspense>

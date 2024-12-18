@@ -4,6 +4,7 @@ import icons from "~/Common/icons";
 import { useSelector } from "react-redux";
 const Subject = () => {
   const subject = "CSS";
+  // const subject = useSelector(state => state.quiz.subject);
   const theme = useSelector((state) => state.theme);
   const iconRef = useRef();
 
