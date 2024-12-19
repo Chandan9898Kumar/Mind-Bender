@@ -1,11 +1,22 @@
 import React, { useEffect, useRef } from "react";
 import style from "./style.module.css";
 import icons from "~/Common/icons";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 const Subject = () => {
   const subject = useSelector((state) => state.quiz.subject);
   const theme = useSelector((state) => state.theme);
   const iconRef = useRef();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const query = new URLSearchParams(location.search);
+  const urlQueryParam = query.get("subject");
+
+  useEffect(() => {
+    if (!urlQueryParam) {
+      dispatch({ type: "START_QUIZ", subject: "" });
+    }
+  }, [urlQueryParam, dispatch]);
 
   useEffect(() => {
     if (subject === "Accessibility") {
@@ -20,12 +31,16 @@ const Subject = () => {
 
   return (
     <section className={style.subject}>
-      <div ref={iconRef} className={style.subject_icon}>
-        <img src={icons[`${subject}`]} alt={subject} loading="lazy" />
-      </div>
-      <h1 className={theme === "light" ? style.light : style.dark}>
-        {subject}
-      </h1>
+      {subject && (
+        <>
+          <div ref={iconRef} className={style.subject_icon}>
+            <img src={icons[`${subject}`]} alt={subject} loading="lazy" />
+          </div>
+          <h1 className={theme === "light" ? style.light : style.dark}>
+            {subject}
+          </h1>
+        </>
+      )}
     </section>
   );
 };

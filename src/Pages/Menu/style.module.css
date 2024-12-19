@@ -42,31 +42,7 @@
 
 .menu_intro h1 span {
   font-weight: 500;
-  background-image: url("https://images.unsplash.com/photo-1612058237353-6213b412a1c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
-  background-size: contain;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation-name: metal;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  margin: 0px;
-  color: transparent;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   text-align: end;
-}
-
-@keyframes metal {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 200px;
-  }
-  100% {
-    background-position: 0 0;
-  }
 }
 
 .menu_intro p {
@@ -81,7 +57,7 @@
   background: linear-gradient(to right, #666363 0, white 10%, #abc1e1 20%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: animate 3s linear infinite;
+  animation: animate 2s linear infinite;
 }
 
 @keyframes animate {
@@ -110,6 +86,36 @@
   flex-direction: column;
   gap: 24px;
 }
+
+/* Button Radial Rotate*/
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: true;
+}
+
+@property --gradX {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: true;
+}
+
+@property --gradY {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+:root {
+  --d: 2500ms;
+  --angle: 90deg;
+  --gradX: 100%;
+  --gradY: 50%;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
+}
+
 .menu_subjects button {
   cursor: pointer;
   height: 96px;
@@ -123,7 +129,27 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 28px */
+  line-height: 100%;
+
+  &:hover {
+    border: 0.35rem solid;
+    border-radius: 24px;
+    border-image: conic-gradient(
+        from var(--angle),
+        var(--c2),
+        var(--c1) 0.1turn,
+        var(--c1) 0.15turn,
+        var(--c2) 0.25turn
+      )
+      30;
+    animation: borderRotate var(--d) linear infinite forwards;
+  }
+}
+
+@keyframes borderRotate {
+  100% {
+    --angle: 420deg;
+  }
 }
 
 .menu_subjects button.light {
