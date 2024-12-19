@@ -22,7 +22,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: all 0.2s linear, background-position 0s;
+  transition: all 0.5s linear, background-position 0s;
 }
 
 /* Thin scrollbar */

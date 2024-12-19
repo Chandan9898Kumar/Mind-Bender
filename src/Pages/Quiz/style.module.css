@@ -1,0 +1,7 @@
+.quiz {
+  width: 1160px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px auto 74px auto;
+  gap: 30px;
+}

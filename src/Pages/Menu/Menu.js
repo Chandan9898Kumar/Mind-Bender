@@ -82,10 +82,10 @@ const Menu = () => {
 
   const handleSubject = useCallback(
     (event) => {
-      const subjectTitle = event.target.getAttribute("data-subject");
+      const subject = event.target.getAttribute("data-subject");
 
-      dispatch({ type: "START_QUIZ", subjectTitle });
-      navigate(`quiz/:${subjectTitle}`);
+      dispatch({ type: "START_QUIZ", subject });
+      navigate(`quiz/:${subject}`);
     },
     [navigate, dispatch]
   );
