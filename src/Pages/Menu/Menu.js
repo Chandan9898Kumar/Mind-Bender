@@ -85,7 +85,7 @@ const Menu = () => {
       const subject = event.target.getAttribute("data-subject");
 
       dispatch({ type: "START_QUIZ", subject });
-      navigate(`quiz/:${subject}`);
+      navigate(`/quiz?subject=${subject}`);
     },
     [navigate, dispatch]
   );
