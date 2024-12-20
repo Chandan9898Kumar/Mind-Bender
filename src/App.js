@@ -24,6 +24,8 @@ const Quiz = lazyWithRetry(() => import("./Pages/Quiz"));
 
 const Result = lazyWithRetry(() => import("./Pages/Results"));
 
+const NotFoundView = lazyWithRetry(() => import('./Error/NotFound'));
+
 function App() {
   return (
     <Provider store={store}>
@@ -35,6 +37,7 @@ function App() {
               <Route exact path="/" element={<Menu />} />
               <Route exact path="/quiz" element={<Quiz />} />
               <Route exact path="/result" element={<Result />} />
+              <Route path="*" element={<NotFoundView />} />
             </Routes>
           </Suspense>
         </BrowserRouter>
