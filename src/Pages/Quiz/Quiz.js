@@ -56,8 +56,8 @@ const Quiz = () => {
               }`}
             </h2>
 
-            <h1 className={switchTheme()}>{currentQuestion.question}</h1>
-            <ProgressBar totalQuestion={allQuestions.length} />
+            <h1 className={switchTheme()}>{currentQuestion?.question}</h1>
+            <ProgressBar totalQuestion={allQuestions?.length} />
           </div>
         </>
       )}
