@@ -2,15 +2,19 @@ import React, { memo, useState, useRef, forwardRef } from "react";
 import styles from "./styles.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import icons from "./icons";
-
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 const SubmitAnswer = forwardRef(({ choice, setChoice }, ref) => {
   const [nextQuestion, setNextQuestion] = useState(false);
   const theme = useSelector((state) => state.theme);
+  const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
 
   const handleNextQuestion = () => {};
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    setIsError(true);
+  };
 
   return (
     <>
@@ -26,6 +30,22 @@ const SubmitAnswer = forwardRef(({ choice, setChoice }, ref) => {
       >
         Submit Answer
       </button>
+      {isError && (
+        <Snackbar
+          open={isError}
+          autoHideDuration={3000}
+          onClose={() => setIsError(false)}
+        >
+          <Alert
+            onClose={() => setIsError(false)}
+            severity="error"
+            variant="filled"
+            sx={{ width: "100%" }}
+          >
+            Please select an answer ...
+          </Alert>
+        </Snackbar>
+      )}
     </>
   );
 });
