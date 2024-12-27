@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import icons from "~/Common/icons";
 import PropTypes from "prop-types";
-
+import SubmitAnswer from "./SubmitAnswer";
 const DisplayChoices = ({ choices, answer }) => {
   const theme = useSelector((state) => state.theme);
   const [choice, setChoice] = useState("");
@@ -48,7 +48,6 @@ const DisplayChoices = ({ choices, answer }) => {
     });
   }, [choice]);
 
-
   return (
     <div className={styles.quiz_answers} onClick={handleClick}>
       {choices?.map((option, index) => {
@@ -73,6 +72,8 @@ const DisplayChoices = ({ choices, answer }) => {
           </button>
         );
       })}
+
+      <SubmitAnswer choice={choice} setChoice={setChoice} ref={choiceRef} />
     </div>
   );
 };
