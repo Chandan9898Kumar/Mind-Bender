@@ -8,25 +8,43 @@
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
-  background-color: var(--Purple, #a729f5);
-  color: var(--Pure-White, #fff);
   font-family: var(--font);
+  outline: 2px solid #2c9caf;
+  overflow: hidden;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #2c9caf;
+  transition: all 1000ms;
   &:hover {
-    background: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.5) 0%,
-        rgba(255, 255, 255, 0.5) 100%
-      ),
-      var(--Purple, #a729f5);
+    color: #ffffff;
+    transform: scale(1.025);
+    outline: 2px solid #70bdca;
+    box-shadow: 4px 5px 17px -4px #268391;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #2c9caf;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1000ms;
+  }
+  &:hover::before {
+    width: 250%;
   }
 }
 
-.quiz_submit.light:hover {
-  box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+.quiz_submit.light {
+  background: transparent;
 }
 
-.quiz_submit.dark:hover {
-  box-shadow: 0px 16px 40px 0px rgba(49, 62, 81, 0.14);
+.quiz_submit.dark {
+  background-color: whitesmoke;
 }
 
 .errorMessage {
