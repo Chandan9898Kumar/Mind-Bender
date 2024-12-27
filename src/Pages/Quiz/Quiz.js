@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import data from "./data";
 import ProgressBar from "./ProgressBar";
+import DisplayChoice from './DisplayChoices'
 const Quiz = () => {
   const theme = useSelector((state) => state.theme);
   const subject = useSelector((state) => state.quiz.subject);
@@ -59,6 +60,8 @@ const Quiz = () => {
             <h1 className={switchTheme()}>{currentQuestion?.question}</h1>
             <ProgressBar totalQuestion={allQuestions?.length} />
           </div>
+
+          <DisplayChoice choices={currentQuestion.options}  answer={currentQuestion.answer}  />
         </>
       )}
     </section>

@@ -1,0 +1,142 @@
+.quiz_answers {
+  width: 565px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.quiz_answer {
+  min-height: 92px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 3px solid transparent;
+  padding: 18px 60px 18px 20px;
+  gap: 32px;
+  cursor: pointer;
+}
+
+.quiz_answer h3 {
+  flex-shrink: 0;
+  pointer-events: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  margin: 0px;
+  background-color: var(--Light-Grey, #f4f6fa);
+  color: var(--Grey-Navy, #626c7f);
+}
+
+.quiz_answer:hover h3 {
+  background-color: #f6e7ff;
+  color: var(--Purple, #a729f5);
+}
+
+.quiz_answer p {
+  pointer-events: none;
+  font-family: var(--font);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  text-align: left;
+  margin: 0px;
+}
+
+.quiz_answer p.light {
+  color: var(--Dark-Navy, #313e51);
+}
+
+.quiz_answer p.dark {
+  color: var(--Pure-White, #fff);
+}
+
+.quiz_answer.light {
+  background: var(--Pure-White, #fff);
+  box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+}
+
+.quiz_answer.dark {
+  background: var(--Navy, #3b4d66);
+  box-shadow: 0px 16px 40px 0px rgba(49, 62, 81, 0.14);
+}
+
+.quiz_theme.light {
+  box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+}
+
+.quiz_theme.dark {
+  box-shadow: 0px 16px 40px 0px rgba(49, 62, 81, 0.14);
+}
+
+.isCorrectIcon {
+  width: 40px;
+  object-fit: contain;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 20px;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .quiz_answer p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tablet View */
+
+@media (max-width: 800px) {
+  .quiz_answers {
+    width: 100%;
+  }
+
+  .quiz_answer {
+    min-height: 80px;
+    padding: 12px 40px 12px 12px;
+    overflow: hidden;
+  }
+
+  .isCorrectIcon {
+    right: 14px;
+  }
+
+  .quiz_answer p {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .quiz_answers {
+    gap: 12px;
+  }
+
+  .quiz_answer {
+    min-height: 64px;
+  }
+
+  .quiz_answer h3 {
+    width: 40px;
+    height: 40px;
+    font-size: 1.125rem;
+  }
+
+  .quiz_answer p {
+    font-size: 1.125rem;
+  }
+
+  .isCorrectIcon {
+    width: 32px;
+  }
+}
