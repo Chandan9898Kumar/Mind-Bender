@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import styles from "./styles.module.css";
-
 import { useSelector } from "react-redux";
 import icons from "~/Common/icons";
 import PropTypes from "prop-types";
+
 const DisplayChoices = ({ choices, answer }) => {
   const theme = useSelector((state) => state.theme);
-
   const [choice, setChoice] = useState("");
-
   const choiceRef = useRef();
 
   const switchTheme = useCallback(
@@ -33,10 +31,24 @@ const DisplayChoices = ({ choices, answer }) => {
   // This useEffect will give a purple border to the choice that the user selected.
   useEffect(() => {
     const allChoices = document.querySelectorAll("." + styles.quiz_answer);
-   
+    allChoices.forEach((currentChoice) => {
+      currentChoice.style.border = "";
+      currentChoice.firstElementChild.style.backgroundColor = "";
+      currentChoice.firstElementChild.style.color = "";
+      currentChoice.lastElementChild.setAttribute("src", icons["transparent"]);
+      currentChoice.style.pointerEvents = "";
+    });
+
+    allChoices.forEach((currentChoice) => {
+      if (currentChoice.getAttribute("data-choice") === choice) {
+        currentChoice.style.border = "3px solid #A729F5";
+        currentChoice.firstElementChild.style.backgroundColor = "#A729F5";
+        currentChoice.firstElementChild.style.color = "#FFF";
+      }
+    });
   }, [choice]);
 
-  console.log(choices, answer);
+
   return (
     <div className={styles.quiz_answers} onClick={handleClick}>
       {choices?.map((option, index) => {

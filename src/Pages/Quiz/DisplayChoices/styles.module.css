@@ -15,6 +15,10 @@
   padding: 18px 60px 18px 20px;
   gap: 32px;
   cursor: pointer;
+  transition: all 0.8s;
+  &:hover {
+    border: 3px solid rgb(166 225 175);
+  }
 }
 
 .quiz_answer h3 {
