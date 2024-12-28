@@ -1,4 +1,4 @@
-import React, { memo, useState, useRef, forwardRef } from "react";
+import React, { memo, useState, forwardRef } from "react";
 import styles from "./styles.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import icons from "./icons";
