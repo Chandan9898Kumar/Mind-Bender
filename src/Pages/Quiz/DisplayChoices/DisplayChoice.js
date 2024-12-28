@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import icons from "~/Common/icons";
 import PropTypes from "prop-types";
 import SubmitAnswer from "./SubmitAnswer";
-const DisplayChoices = ({ choices, answer }) => {
+const DisplayChoices = ({ choices, answer, totalQuestion }) => {
   const theme = useSelector((state) => state.theme);
   const [choice, setChoice] = useState("");
   const choiceRef = useRef();
@@ -73,7 +73,7 @@ const DisplayChoices = ({ choices, answer }) => {
         );
       })}
 
-      <SubmitAnswer choice={choice} setChoice={setChoice} ref={choiceRef} />
+      <SubmitAnswer choice={choice} setChoice={setChoice} ref={choiceRef} totalQuestion={totalQuestion} />
     </div>
   );
 };
@@ -81,11 +81,13 @@ const DisplayChoices = ({ choices, answer }) => {
 DisplayChoices.propTypes = {
   choices: PropTypes.array.isRequired,
   answer: PropTypes.string.isRequired,
+  totalQuestion: PropTypes.number.isRequired,
 };
 
 DisplayChoices.defaultProps = {
   choices: [],
   answer: "",
+  totalQuestion: 0,
 };
 
 export default memo(DisplayChoices);

@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store, persistedStore } from "./Store";
 import { PersistGate } from "redux-persist/integration/react";
-
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import "./style.css";
 
 const lazyWithRetry = (componentImport) =>
@@ -24,14 +25,14 @@ const Quiz = lazyWithRetry(() => import("./Pages/Quiz"));
 
 const Result = lazyWithRetry(() => import("./Pages/Results"));
 
-const NotFoundView = lazyWithRetry(() => import('./Error/NotFound'));
+const NotFoundView = lazyWithRetry(() => import("./Error/NotFound"));
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistedStore}>
         <BrowserRouter>
-          <Suspense fallback="Loading ...">
+          <Suspense fallback={<CircularIndeterminate />}>
             <Header />
             <Routes>
               <Route exact path="/" element={<Menu />} />
@@ -47,3 +48,20 @@ function App() {
 }
 
 export default App;
+
+function CircularIndeterminate() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <CircularProgress />
+    </Box>
+  );
+}

@@ -20,7 +20,7 @@ the progress of the quiz. */
       (currentQuestionNumber / totalQuestion) * 100
     }%`;
 
-    if (currentQuestionNumber === 0) {
+    if (currentQuestionNumber === totalQuestion - 1) {
       progressRef.current.style.backgroundColor = "#89d33396";
     }
   }, [currentQuestionNumber, totalQuestion]);

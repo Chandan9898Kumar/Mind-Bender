@@ -61,7 +61,7 @@ const Quiz = () => {
             <ProgressBar totalQuestion={allQuestions?.length} />
           </div>
 
-          <DisplayChoice choices={currentQuestion.options}  answer={currentQuestion.answer}  />
+          <DisplayChoice choices={currentQuestion.options}  answer={currentQuestion.answer} totalQuestion={allQuestions?.length} />
         </>
       )}
     </section>
