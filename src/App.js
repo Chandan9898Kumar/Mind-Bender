@@ -37,7 +37,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Menu />} />
               <Route exact path="/quiz" element={<Quiz />} />
-              <Route exact path="/result" element={<Result />} />
+              <Route exact path="/results" element={<Result />} />
               <Route path="*" element={<NotFoundView />} />
             </Routes>
           </Suspense>

@@ -9,6 +9,7 @@ const ProgressBar = ({ totalQuestion }) => {
   const progressRef = useRef();
   const navigate = useNavigate();
   const theme = useSelector((state) => state.theme);
+  const subject = useSelector((state) => state.quiz.subject);
   const currentQuestionNumber = useSelector(
     (state) => state.quiz.currentQuestionNumber
   );
@@ -31,9 +32,9 @@ In this case, the `useEffect` hook is checking if the `currentQuestionNumber` is
 function from the `react-router-dom` package. */
   useEffect(() => {
     if (currentQuestionNumber === totalQuestion) {
-      navigate("/result");
+      navigate(`/results?subject=${subject}`);
     }
-  }, [currentQuestionNumber, totalQuestion, navigate]);
+  }, [currentQuestionNumber, totalQuestion, navigate, subject]);
 
   return (
     <div
