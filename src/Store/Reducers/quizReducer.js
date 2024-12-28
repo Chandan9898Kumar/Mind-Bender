@@ -6,7 +6,6 @@ export default function quizReducer(
   },
   action
 ) {
-  console.log(action,'action >>>>>>>>>>>>>>>>>>>>>>',quiz)
   switch (action.type) {
     case "START_QUIZ":
       return { subject: action.subject, score: 0, currentQuestionNumber: 0 };

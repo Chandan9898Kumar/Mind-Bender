@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useCallback } from "react";
 import styles from "./styles.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import icons from "~/Common/icons";
 
@@ -12,7 +12,7 @@ const Result = () => {
   const totalQuestions = useSelector(
     (state) => state.quiz.currentQuestionNumber
   );
-  const dispatch = useDispatch();
+
   const subjectIconRef = useRef();
   const navigate = useNavigate();
 
@@ -32,20 +32,18 @@ const Result = () => {
   }, [subject, navigate]);
 
   useEffect(() => {
-    if(subject === 'HTML')
-        subjectIconRef.current.style.backgroundColor = '#FFF1E9';
-    else if (subject === 'CSS')
-        subjectIconRef.current.style.backgroundColor = '#E0FDEF';
-    else if(subject === 'Javascript')
-        subjectIconRef.current.style.backgroundColor = '#EBF0FF';
-    else
-        subjectIconRef.current.style.backgroundColor = '#F6E7FF';
-}, [subject])
+    if (subject === "HTML")
+      subjectIconRef.current.style.backgroundColor = "#FFF1E9";
+    else if (subject === "CSS")
+      subjectIconRef.current.style.backgroundColor = "#E0FDEF";
+    else if (subject === "Javascript")
+      subjectIconRef.current.style.backgroundColor = "#EBF0FF";
+    else subjectIconRef.current.style.backgroundColor = "#F6E7FF";
+  }, [subject]);
 
   const handlePlayAgain = () => {
     navigate("/");
   };
-
 
   return (
     <section className={styles.results}>
