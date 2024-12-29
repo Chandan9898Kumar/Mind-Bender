@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, memo } from "react";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import icons from "~/Common/icons";
-
+import { PieChart } from "@mui/x-charts/PieChart";
 const Result = () => {
   const theme = useSelector((state) => state.theme);
   const subject = useSelector((state) => state.quiz.subject);
@@ -50,6 +50,10 @@ const Result = () => {
       <div className={styles.results_intro}>
         <h1 className={switchTheme()}>Quiz Completed</h1>
         <h2 className={switchTheme()}>You Scored ...</h2>
+        <QuizPieChart
+          correctScore={score}
+          wrongScore={totalQuestions - score}
+        />
       </div>
 
       <div className={styles.results_score}>
@@ -82,3 +86,22 @@ const Result = () => {
 };
 
 export default Result;
+
+function BasicPie({ correctScore, wrongScore }) {
+  return (
+    <PieChart
+      series={[
+        {
+          data: [
+            { id: 0, value: correctScore, label: "Correct Answers" },
+            { id: 1, value: wrongScore, label: "Wrong Answers" },
+          ],
+        },
+      ]}
+      width={500}
+      height={200}
+    />
+  );
+}
+
+const QuizPieChart = memo(BasicPie);
